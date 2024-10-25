@@ -111,7 +111,7 @@ def connect_with_person(profile_url, window, person_name, searchTerm):
 # Function to add note and send connection request
 def add_note_and_send(person_name, searchTerm):
     hard_click(actions, try_xp(driver, "//button[@aria-label='Add a note']", False))
-    note_key = f"Hi {person_name},\nI hope you’re doing well! I came across your profile and was impressed by your work as a {searchTerm}. I’m currently exploring job opportunities in the same field and would love to connect to learn from your experiences and insights.\nThank you,\n{config['name']}."
+    note_key = f"Hi {person_name},\nI hope you’re doing well! I came across your profile and was impressed by your work in your current role. I’m currently exploring job opportunities in the same field and would love to connect to learn from your experiences and insights.\nThank you,\n{config['name']}."
     text_input_by_ID(driver, "custom-message", note_key)
     hard_click(actions, try_xp(driver, "//button[@aria-label='Send invitation']", False))
 
