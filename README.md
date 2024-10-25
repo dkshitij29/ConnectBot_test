@@ -23,7 +23,7 @@ This bot helps you build a network with your ideal connections on LinkedIn. It a
     ```
 
 3. **Configure the Bot**:
-  Open the `/setup` folder and enter your login details in `secrets.py`. Adjust other settings in `config.py` as needed. Modify the note if needed at Line 114 in [connectBot.py](/connectBot.py)
+  Open the `/setup` folder and enter your login details in `secrets.py`. Adjust other settings in `config.py` as needed. Modify the note if needed at Line 114 in [connectBot.py](/connectBot.py). If you want to connect to people of specific companies, add the company codes at Line 135 in [connectBot.py](/connectBot.py) in the specified format only.
 
 
 4. **Run the Bot**:
