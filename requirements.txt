@@ -1,0 +1,4 @@
+pyautogui
+setuptools
+pyyaml
+webdriver-manager==4.0.2
