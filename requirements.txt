@@ -1,4 +1,5 @@
 pyautogui
 setuptools
 pyyaml
+selenium
 webdriver-manager==4.0.2
