@@ -85,7 +85,7 @@ try:
     actions = ActionChains(driver)
     
 except Exception as e:
-    msg = 'Error in opening Chrome. Check logs for more details.'
+    msg = 'Error in opening Chrome. Check logs for more details. Close instances of Chrome profile of the bot and try again.'
     if isinstance(e,TimeoutError): msg = "Chrome took too long to open. Check logs for more details and try again."
     print_lg(msg)
     critical_error_log("In Opening Chrome", e)
