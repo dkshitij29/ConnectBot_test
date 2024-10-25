@@ -134,7 +134,7 @@ def main():
             # Searches for people in Amazon, Tesla and Nvidia
             company_list=['"3608"','"1586"','"15564"']
             company_str = "%5B"+ "%2C".join(company_list) + "%5D"
-            driver.get(f"""https://www.linkedin.com/search/results/people/?currentCompany={company_str}&keywords=""")
+            driver.get(f"""https://www.linkedin.com/search/results/people/?currentCompany={company_str}&keywords={searchTerm}""")
             
             # Searches for people in general
             # driver.get(f"https://www.linkedin.com/search/results/people/?keywords={searchTerm}")
