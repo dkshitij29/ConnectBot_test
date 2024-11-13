@@ -6,7 +6,7 @@ This bot helps you build a network with your ideal connections on LinkedIn. It a
 1. **Clone the Repository**:
     ```bash
     git clone https://github.com/Datta-Lohith/ConnectBot.git
-    cd Connect-Bot
+    cd ConnectBot
     ```
 
 2. **Create Virtual Environment**:
