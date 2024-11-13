@@ -94,15 +94,22 @@ def connect_with_person(profile_url, window, person_name, searchTerm):
 
     driver.get(profile_url)
     sleep(3)
+    try:
+        
+        if try_xp(driver, "(//span[@class='artdeco-button__text'][normalize-space()='Pending'])[2]", False):
+            return False
+        connect_button = hard_click(actions, try_xp(driver, "(//button[contains(@class, 'artdeco-button--primary') and .//span[text()='Connect']])[2]", False))
+        if not connect_button:
+            connect_button = hard_click(actions, try_xp(driver, "(//button[contains(@class, 'artdeco-button--secondary') and .//span[text()='Connect']])[2]", False))
+        if not connect_button:
+            hard_click(actions, try_xp(driver, "(//button[@aria-label='More actions'])[2]", False))
+            sleep(1)
+            hard_click(actions, try_xp(driver, "(//span[@class='display-flex t-normal flex-1'][normalize-space()='Connect'])[2]",False))
     
-    if try_xp(driver, "(//span[@class='artdeco-button__text'][normalize-space()='Pending'])[2]", False):
-        return False
-    connect_button = hard_click(actions, try_xp(driver, "(//button[contains(@class, 'artdeco-button--primary') and .//span[text()='Connect']])[2]", False))
-    if not connect_button:
-        hard_click(actions, try_xp(driver, "(//button[@aria-label='More actions'])[2]", False))
-        sleep(1)
-        hard_click(actions, try_xp(driver, "(//span[@class='display-flex t-normal flex-1'][normalize-space()='Connect'])[2]",False))
-
+    except Exception as e:
+            print_lg("Couldn't find Connect button, so skipping this person!")
+            return False
+        
     if config["add_note"]: add_note_and_send(person_name, searchTerm)
     else: hard_click(actions, try_xp(driver, "//button[@aria-label='Send without a note']", False))
     
@@ -111,7 +118,7 @@ def connect_with_person(profile_url, window, person_name, searchTerm):
 # Function to add note and send connection request
 def add_note_and_send(person_name, searchTerm):
     hard_click(actions, try_xp(driver, "//button[@aria-label='Add a note']", False))
-    note_key = f"Hi {person_name},\nI hope you’re doing well! I came across your profile and was impressed by your work in your current role. I’m currently exploring job opportunities in the same field and would love to connect to learn from your experiences and insights.\nThank you,\n{config['name']}."
+    note_key = f"Hi {person_name},\nI hope you’re doing well! I came across your profile and was impressed by your work. I’m currently exploring job opportunities in the same field and would love to connect to learn from your experiences and insights.\nThank you,\n{config['name']}."
     text_input_by_ID(driver, "custom-message", note_key)
     hard_click(actions, try_xp(driver, "//button[@aria-label='Send invitation']", False))
 
@@ -134,6 +141,7 @@ def main():
             # Searches for people in Amazon, Tesla and Nvidia
             company_list=['"3608"','"1586"','"15564"']
             company_str = "%5B"+ "%2C".join(company_list) + "%5D"
+            company_str = ""
             driver.get(f"""https://www.linkedin.com/search/results/people/?currentCompany={company_str}&keywords={searchTerm}""")
             
             # Searches for people in general
@@ -202,7 +210,7 @@ def main():
 
     except NoSuchWindowException:   pass
     except Exception as e:
-        critical_error_log("In Applier Main", e)
+        critical_error_log("In Connector Main", e)
         pyautogui.alert(e,alert_title)
     finally:
         quote = choice([
