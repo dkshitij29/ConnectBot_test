@@ -5,7 +5,7 @@ This bot helps you build a network with your ideal connections on LinkedIn. It a
 
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/Datta-Lohith/Connect-Bot.git
+    git clone https://github.com/Datta-Lohith/ConnectBot.git
     cd Connect-Bot
     ```
 
@@ -14,10 +14,20 @@ This bot helps you build a network with your ideal connections on LinkedIn. It a
     ```bash
     python -m venv virtual
     .\virtual\Scripts\activate 
+    ```  
+  Run the following commands to create and run the project in a virtual environment.(In Linux based OS)
+    ```bash
+    python -m venv virtual
+    source \virtual\bin\activate
     ```
 
 3. **Install Dependencies**:
   Ensure you have Python 3 installed. Then, install the required packages:
+  - Ubuntu(Skip this step if Windows)
+    ```bash
+    sudo apt-get python3-tk python3-dev
+    ```
+  - Install from requirements.txt
     ```bash
     pip install -r requirements.txt
     ```
@@ -31,6 +41,15 @@ This bot helps you build a network with your ideal connections on LinkedIn. It a
     ```bash
     python connectBot.py
     ```
+
+## Note
+
+If the error arises when activating the virtual environment. Run the powershell as admin and run the following command.
+
+```
+set-executionpolicy remotesigned
+```
+
 
 ## 📜 Disclaimer
 
@@ -72,3 +91,9 @@ For any inquiries, support, or feedback, please reach out via the following plat
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/datta-lohith)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Datta-Lohith)
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:gdattalohith@gmail.com)
+
+## ❤️ Support
+
+If you find this project helpful and would like to support its development, consider giving it a star on GitHub or sharing it with your network. Your support is greatly appreciated!
+
+[![GitHub Stars](https://img.shields.io/github/stars/Datta-Lohith/Connect-Bot?style=social)](https://github.com/Datta-Lohith/Connect-Bot/stargazers)
