@@ -96,4 +96,7 @@ For any inquiries, support, or feedback, please reach out via the following plat
 
 If you find this project helpful and would like to support its development, consider giving it a star on GitHub or sharing it with your network. Your support is greatly appreciated!
 
-[![GitHub Stars](https://img.shields.io/github/stars/Datta-Lohith/Connect-Bot?style=social)](https://github.com/Datta-Lohith/Connect-Bot/stargazers)
+![Project Views](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/Datta-Lohith/ConnectBot&title=People%20Used%20This%20Project)
+
+
+[![GitHub Stars](https://img.shields.io/github/stars/Datta-Lohith/ConnectBot?style=social)](https://github.com/Datta-Lohith/ConnectBot/stargazers)
