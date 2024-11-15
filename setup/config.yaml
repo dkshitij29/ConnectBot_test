@@ -5,8 +5,8 @@
 # Directory and name of the files where history of applied jobs is saved (Sentence after the last "/" will be considered as the file name).
 logs_folder_path: "logs/"
 
-# Set the maximum amount of time allowed to wait between each click in secs
-click_gap: 0                      # Enter max allowed secs to wait approximately. (Only Non Negative Integers Eg: 0,1,2,3,....)
+# Set the maximum amount of time allowed to wait between each click in secs(Keep minumum value as 5 to bypass antibot measures).
+click_gap: 5                      # Enter max allowed secs to wait approximately. (Only Non Negative Integers Eg: 0,1,2,3,....)
 
 # If you want to see Chrome running then set run_in_background as False (May reduce performance).
 run_in_background: false          # true or false , If true, this will make pause_at_failed_question, pause_before_submit and run_in_background as False
@@ -25,7 +25,7 @@ name: "Datta Lohith Gannavarapu"                 # Your Full Name
 
 add_note: true                    # true or false
 
-search_terms: ["Robotics Engineer","Computer vision Engineer","ML Engineer"] # List of search terms
+search_terms: ["Robotics Engineer Amazon Nvidia","Computer vision Engineer","ML Engineer"] # List of search terms
 
 max_connections_per_search: 11  # Maximum number of connections per search
 

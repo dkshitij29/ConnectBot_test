@@ -84,31 +84,40 @@ def get_page_info():
         print_lg("Failed to find Pagination element, hence couldn't scroll till end!")
         pagination_element = None
         current_page = None
-        # print_lg(e)
     return pagination_element, current_page
 
 
 # Function to send connection request
 def connect_with_person(profile_url, window, person_name, searchTerm):
-    driver.switch_to.window(window)
-
-    driver.get(profile_url)
-    sleep(3)
     try:
-        
+        driver.switch_to.window(window)
+        driver.get(profile_url)
+        sleep(3)
+            
         if try_xp(driver, "(//span[@class='artdeco-button__text'][normalize-space()='Pending'])[2]", False):
             return False
-        connect_button = hard_click(actions, try_xp(driver, "(//button[contains(@class, 'artdeco-button--primary') and .//span[text()='Connect']])[2]", False))
+        
+        # Checks for two types of Connect buttons and clicks on them and returns True if successful
+        connect_button = (
+            hard_click(actions, try_xp(driver, "(//button[contains(@class, 'artdeco-button--primary') and .//span[text()='Connect']])[2]", False)) or
+            hard_click(actions, try_xp(driver, "(//button[contains(@class, 'artdeco-button--secondary') and .//span[text()='Connect']])[2]", False))
+        )
+
+        # If Connect button is not found, then tries to click on More actions and then Connect button
         if not connect_button:
-            connect_button = hard_click(actions, try_xp(driver, "(//button[contains(@class, 'artdeco-button--secondary') and .//span[text()='Connect']])[2]", False))
+            more_actions = try_xp(driver, "//button[@aria-label='More actions']", False)
+            if more_actions:
+                hard_click(actions, try_xp(driver, "(//button[@aria-label='More actions'])[2]", False))
+                sleep(1)
+                connect_button = hard_click(actions, try_xp(driver, "(//span[@class='display-flex t-normal flex-1'][normalize-space()='Connect'])[2]",False))
+
         if not connect_button:
-            hard_click(actions, try_xp(driver, "(//button[@aria-label='More actions'])[2]", False))
-            sleep(1)
-            hard_click(actions, try_xp(driver, "(//span[@class='display-flex t-normal flex-1'][normalize-space()='Connect'])[2]",False))
-    
-    except Exception as e:
             print_lg("Couldn't find Connect button, so skipping this person!")
             return False
+        
+    except Exception as e:
+        print_lg("Couldn't find Connect button, so skipping this person!")
+        return False
         
     if config["add_note"]: add_note_and_send(person_name, searchTerm)
     else: hard_click(actions, try_xp(driver, "//button[@aria-label='Send without a note']", False))
@@ -138,19 +147,12 @@ def main():
             current_request = 0
             if current_request >= config["max_connections_per_search"]: break
 
-            # Searches for people in Amazon, Tesla and Nvidia
-            company_list=['"3608"','"1586"','"15564"']
-            company_str = "%5B"+ "%2C".join(company_list) + "%5D"
-            company_str = ""
-            driver.get(f"""https://www.linkedin.com/search/results/people/?currentCompany={company_str}&keywords={searchTerm}""")
-            
             # Searches for people in general
-            # driver.get(f"https://www.linkedin.com/search/results/people/?keywords={searchTerm}")
+            driver.get(f"https://www.linkedin.com/search/results/people/?keywords={searchTerm}")
             
             print_lg("\n________________________________________________________________________________________________________________________\n")
             print_lg(f'\n>>>> Now searching for "{searchTerm}" <<<<\n\n')
             buffer(2)
-
 
             while current_request < config["max_connections_per_search"]:
                 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
