@@ -21,11 +21,37 @@ smooth_scroll: false              # true or false
 keep_screen_awake: true           # true or false (Note: Will temporarily deactivate when any application dialog boxes are present (Eg: Pause before submit, Help needed for a question..))
 
 #<<<<<<<<<<<<< LinkedIn Settings >>>>>>>>>>>>>>>>
-name: "Datta Lohith Gannavarapu"                 # Your Full Name
+name: "Profile Name"                 # Your Full Name
 
 add_note: true                    # true or false
 
-search_terms: ["Robotics Engineer Amazon Nvidia","Computer vision Engineer","ML Engineer"] # List of search terms
+# Target Company
+company_name: "company"
+
+# Search Terms
+search_terms: [
+   "Software Engineer at {{company_name}}",
+   "Software Developer at {{company_name}}",
+   "Frontend Developer at {{company_name}}",
+   "Backend Developer at {{company_name}}",
+   "Full Stack Developer at {{company_name}}",
+   "Machine Learning Engineer at {{company_name}}",
+   "Data Engineer at {{company_name}}",
+   "DevOps Engineer at {{company_name}}",
+   "Cloud Engineer at {{company_name}}",
+   "Software Engineering Intern at {{company_name}}",
+   "Sr Software Engineer at {{company_name}}",
+   "Sr Software Developer at {{company_name}}",
+   "Sr Frontend Developer at {{company_name}}",
+   "Sr Backend Developer at {{company_name}}",
+   "Sr Full Stack Developer at {{company_name}}",
+   "Sr Machine Learning Engineer at {{company_name}}",
+   "Sr Data Engineer at {{company_name}}",
+   "DevOps Engineer at {{company_name}}",
+   "Cloud Engineer at {{company_name}}",
+   "Software Engineering Intern at {{company_name}}"
+]
 
 max_connections_per_search: 11  # Maximum number of connections per search
 
+ 
